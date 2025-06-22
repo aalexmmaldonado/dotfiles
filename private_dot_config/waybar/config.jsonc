@@ -1,0 +1,214 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 42,
+  "spacing": 0,
+
+  // Pango formatting
+  // https://docs.gtk.org/Pango/pango_markup.html#pango-markup
+
+  //////////
+  // Left //
+  //////////
+  "modules-left": [
+    "group/group-power",
+    "battery",
+    "power-profiles-daemon",
+    "hyprland/workspaces",
+  ],
+
+  "group/group-power": {
+      "orientation": "inherit",
+      "drawer": {
+          "transition-duration": 500,
+          "children-class": "not-lock",
+          "transition-left-to-right": true,
+      },
+      "modules": [
+          "custom/lock",
+          "custom/suspend",
+          "custom/reboot",
+          "custom/power",
+      ]
+  },
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 20
+    },
+    "format": " <span color='#28CD41' rise='2pt'>{icon}</span>  {capacity}% ",
+    "format-charging": "<span color='#f9c74f'> 󱐋</span> <span color='#f9c74f' rise='-1pt'>{capacity}%</span>",
+	  "interval": 1,
+    "format-icons": ["󰂎", "󰁼", "󰁿", "󰂁", "󰁹"],
+    "tooltip": true
+  },
+  "power-profiles-daemon": {
+    "format": "  {icon}    <span rise='-5pt'>{profile}</span>  ",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "<span rise='-4pt'>\uf0e7</span>",
+      "performance": "<span color='#f3722c' rise='-5pt'>\uf0e7</span>",
+      "balanced": "<span color='#00b4d8' rise='-4pt'>\uf24e</span> ",
+      "power-saver": "<span color='#90be6d' rise='-4pt'>\uf06c</span>"
+    }
+  },
+  "custom/lock": {
+    "format": "<span color='#cdb4db'> </span>",
+    "on-click": "hyprlock",
+    "tooltip": true,
+    "tooltip-format": "Lock screen"
+  },
+  "custom/suspend": {
+    "format": "<span color='#caf0f8' rise='-18pt'>  </span>",
+    "on-click": "systemctl suspend",
+    "tooltip": true,
+    "tooltip-format": "Suspend"
+  },
+  "custom/power": {
+    "format": "<span color='#E68789'>  </span>",
+    "on-click": "~/.config/waybar/scripts/powermenu.sh",
+    "tooltip": true,
+    "tooltip-format": "Shut down"
+  },
+  "custom/reboot": {
+    "format": "<span color='#FFD700'>  </span>",
+    "on-click": "systemctl reboot",
+    "tooltip": true,
+    "tooltip-format": "Restart"
+  },
+  "hyprland/workspaces": {
+    "disable-scroll": false,
+    "all-outputs": false,
+    "on-click": "activate",
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": [],
+    }
+  },
+
+  
+
+
+
+  ////////////
+  // Center //
+  ////////////
+  "modules-center": ["clock"],
+
+
+  
+
+  "modules-right": [
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "backlight",
+    "custom/temperature",
+    "memory",
+    "cpu",
+  ],
+
+
+
+  "cpu": {
+       "interval": 1,
+       "format": "<span color='#CCC0E3' rise='-2pt'>  </span> {icon0}{icon1}{icon2}{icon3}{icon4}{icon5}{icon6}{icon7}{icon8}{icon9}{icon10}{icon11}{icon12}{icon13}{icon14}{icon15}{icon16}  <span color='#EAE6F4' rise='-4pt'>{usage}%</span>",
+       "format-icons": [
+            "<span color='#E6E6F4'>▁</span>",
+            "<span color='#D9D9EE'>▂</span>",
+            "<span color='#CCCDE9'>▃</span>",
+            "<span color='#B3B4DE'>▄</span>",
+            "<span color='#9A9BD3'>▅</span>",
+            "<span color='#8082C7'>▆</span>",
+            "<span color='#6769BC'>▇</span>",
+            "<span color='#4F50B1'>█</span>" 
+       ]
+  },
+  "network": {
+    "format-wifi": "<span color='#00FFFF' rise='2pt'> 󰤨 </span> {essid} ",
+    "format-ethernet": "<span color='#7FFF00'> </span> Wired ",
+    "tooltip-format": "<span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes}",
+    "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
+    "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
+    "format-alt": "<span color='#00FFFF'> 󰤨 </span> {signalStrength}% ",
+    "interval": 1
+  },
+  "pulseaudio": {
+    "format": "<span color='#00FF7F' rise='1pt'> {icon}</span>{volume}% ",
+    "format-muted": "<span color='#FA6B6E' rise='-20pt'> 󰖁 </span><span color='#FA6B6E' rise='-21pt'>Muted</span>",
+    "format-icons": {
+      "headphone": "<span color='#BF00FF'> </span>",
+      "hands-free": "<span color='#BF00FF'> </span>",
+      "headset": "<span color='#BF00FF'> </span>",
+      "phone": "<span color='#00FFFF'> </span>",
+      "portable": "<span color='#00FFFF'> </span>",
+      "car": "<span color='#FFA500'> </span>",
+      "default": [
+        "<span color='#808080'> </span>",
+        "<span color='#FFFF66'> </span>",
+        "<span color='#00FF7F'> </span>"
+      ]
+    },
+    "on-click-right": "pavucontrol -t 3",
+    "on-click": "pactl -- set-sink-mute 0 toggle",
+    "tooltip": true,
+    "tooltip-format": "Current system sound: {volume}%"
+  },
+  "custom/temperature": {
+    "exec": "sensors | awk '/^Package id 0:/ {print int($4)}'",
+    "format": "<span color='#FFA500' rise='1pt'> </span> {}°C ",
+    "interval": 2,
+    "tooltip": true,
+    "tooltip-format": "CPU temp: {}°C"
+  },
+  "memory": {
+    "format": "<span color='#ffafcc' rise='1pt'>  </span> {used:0.1f} / {total:0.0f} G ",
+    "tooltip": true,
+    "tooltip-format": "Memory: {used:0.2f}G / {total:0.2f}G"
+  },
+  "clock": {
+    "interval": 1,
+    "timezone": "US/Eastern",
+    "format": "{:%I:%M:%S %p} ",
+    "tooltip": true,
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "",
+      "on-scroll": 1,
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
+    }
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "<span color='#FFD700' rise='1pt'>{icon}</span>{percent}% ",
+    "tooltip": true,
+    "tooltip-format": "Brightness: {percent}%",
+    "format-icons": [
+      "<span color='#696969'> 󰃞 </span>",
+      "<span color='#A9A9A9'> 󰃝 </span>",
+      "<span color='#FFFF66'> 󰃟 </span>",
+      "<span color='#FFD700'> 󰃠 </span>" 
+    ]
+  },
+  "bluetooth": {
+    "format": "<span color='#00BFFF' rise='1pt'>  </span>{status} ",
+    "format-connected": "<span color='#00BFFF'>  </span>{device_alias} ",
+    "format-connected-battery": "<span color='#00BFFF'>  </span>{device_alias}{device_battery_percentage}% ",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+  }
+}

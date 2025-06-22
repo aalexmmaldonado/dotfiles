@@ -1,0 +1,29 @@
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+
+ENABLE_CORRECTION="true"
+
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git chezmoi gh git-auto-fetch rust ssh)
+
+source $ZSH/oh-my-zsh.sh
+
+###   ENVARS   ###
+export LANG=en_US.UTF-8
+export TERM=xterm-256color
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='nano'
+else
+  export EDITOR='helix'
+fi
+export RUST_BACKTRACE=1
+export TYPST_FONT_PATHS="~/.fonts"
+
+###   ALIASES   ###
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+

@@ -7,6 +7,7 @@ path-completion = true
 rulers = [88]
 default-line-ending = "lf"
 insert-final-newline = true
+auto-pairs = false
 
 [editor.cursor-shape]
 normal = "block"

@@ -1,11 +1,14 @@
 [Unit]
-Description=rclonemount
-AssertPathIsDirectory=~/dropbox
+Description=Mount dropbox to user home directory.
+AssertPathIsDirectory=%h/dropbox
 Wants=network-online.target
 After=network-online.target
 
 [Service]
 Type=notify
-ExecStart=/usr/bin/rclone mount --config=~/.config/rclone/rclone.conf Dropbox: ~/dropbox
-ExecStop=/bin/fusermount -u ~/dropbox
+ExecStart=/usr/bin/rclone mount --config=%h/.config/rclone/rclone.conf Dropbox: %h/dropbox
+ExecStop=/bin/fusermount -u %h/dropbox
 RestartSec=10
+
+[Install]
+WantedBy=default.target

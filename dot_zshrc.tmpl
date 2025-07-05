@@ -4,7 +4,7 @@ export ZSH="/usr/share/oh-my-zsh"
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git chezmoi gh git-auto-fetch rust ssh)
@@ -27,3 +27,5 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 alias hx='helix'
+
+alias tp=' tree -I "__init__*" -I "__pycache__"'

@@ -18,6 +18,7 @@ if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='nano'
 else
   export EDITOR='helix'
+  export GIT_EDITOR='helix'
 fi
 export RUST_BACKTRACE=1
 export TYPST_FONT_PATHS="~/.fonts"

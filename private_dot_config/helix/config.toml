@@ -1,13 +1,37 @@
 theme = "onedark"
 
 [editor]
-scrolloff = 999
+scrolloff = 10
+mouse = true
+middle-click-paste = true
+scroll-lines = 3
 line-number = "relative"
+cursorline = false
+cursorcolumn = false
+continue-comments = true
+auto-completion = true
 path-completion = true
+auto-format = true
+preview-completion-insert = true
+completion-trigger-len = 2
+auto-info = true
+true-color = false
+bufferline = "multiple"
 rulers = [88]
+color-modes = false
+text-width = 88
 default-line-ending = "lf"
 insert-final-newline = true
 auto-pairs = false
+
+[editor.lsp]
+enable = true
+display-messages = true
+auto-signature-help = true
+display-inlay-hints = true
+display-signature-help-docs = true
+snippets = true
+goto-reference-include-declaration = true
 
 [editor.cursor-shape]
 normal = "block"
@@ -15,9 +39,33 @@ insert = "bar"
 select = "block"
 
 [editor.file-picker]
-hidden = true
+hidden = false
+follow-symlinks = true
 ignore = true
 git-ignore = false
+
+[editor.auto-save]
+focus-lost = false
+after-delay.enable = false
+
+[editor.search]
+smart-case = true
+wrap-around = true
+
+[editor.whitespace.render]
+space = "none"
+tab = "all"
+nbsp = "none"
+nnbsp = "none"
+newline = "none"
+
+[editor.whitespace.characters]
+tab = "→"
+
+[editor.indent-guides]
+render = true
+character = "╎"
+skip-levels = 1
 
 [editor.soft-wrap]
 enable = true

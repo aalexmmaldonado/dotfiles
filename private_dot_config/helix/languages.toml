@@ -4,8 +4,6 @@ language-id = "python"
 file-types = ["py"]
 roots = [".", "pixi.toml", "setup.py", "pyproject.toml"]
 auto-format = true
-comment-tokens = ["#"]
-block-comment-tokens = {start = '"""', end = '"""'}
 language-servers = ["basedpyright", "ruff", "codebook", "ty"]
 formatter = {command = "ruff", args = ["format", "-"]}
 

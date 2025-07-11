@@ -2,18 +2,12 @@
 name = "python"
 language-id = "python"
 file-types = ["py"]
-roots = [".", "pixi.toml", "setup.py", "pyproject.toml", "setup.py"]
+roots = [".", "pixi.toml", "setup.py", "pyproject.toml"]
 auto-format = true
+comment-tokens = ["#"]
+block-comment-tokens = {start = '"""', end = '"""'}
 language-servers = ["basedpyright", "ruff", "codebook", "ty"]
 formatter = {command = "ruff", args = ["format", "-"]}
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-"'" = "'"
-'`' = '`'
-'<' = '>'
 
 [[language]]
 name = "rust"
@@ -24,13 +18,6 @@ language-servers = ["rust-analyzer"]
 name = "markdown"
 language-id = "markdown"
 language-servers = ["marksman", "codebook", "markdown-oxide"]
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-"'" = "'"
-'<' = '>'
 
 [[language]]
 name = "bash"
@@ -50,14 +37,6 @@ name = "typescript"
 [[language]]
 name = "mojo"
 language-servers = ["mojo-lsp-server", "codebook"]
-
-[language.auto-pairs]
-'(' = ')'
-'{' = '}'
-'[' = ']'
-"'" = "'"
-'`' = '`'
-'<' = '>'
 
 [[language]]
 name = "latex"
@@ -94,7 +73,6 @@ args = ["lsp"]
 [language-server.ty]
 command = "ty"
 args = ["server"]
-
 
 [language-server.markdown-oxide]
 command = "markdown-oxide"

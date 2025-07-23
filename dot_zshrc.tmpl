@@ -30,3 +30,12 @@ alias l='ls -CF'
 alias hx='helix'
 
 alias tp=' tree -I "__init__*" -I "__pycache__"'
+
+###   PATHS   ###
+pathadd() {
+  if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+    PATH="${PATH:+"$PATH:"}$1"
+  fi
+}
+
+pathadd ~/.local/bin

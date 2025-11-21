@@ -78,3 +78,7 @@ cursor-line = "info"
 C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
 d = "delete_selection_noyank"
 A-d = "delete_selection"
+
+# Linux keymaps on MacOS
+Cmd-u = "page_cursor_half_up"
+Cmd-d = "page_cursor_half_down"
